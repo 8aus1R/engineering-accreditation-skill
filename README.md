@@ -25,6 +25,7 @@ A Codex skill for engineering accreditation coursework: grade auditing, course o
 ```text
 engineering-accreditation-skill/
 ├── README.md
+├── LICENSE                         # MIT 许可证
 ├── PUBLICATION.md
 ├── .gitignore
 ├── examples/
@@ -152,4 +153,8 @@ python -m unittest discover -s tests -v
 
 ## 许可证
 
-此整理版本暂未附加 `LICENSE`。发布者可在确认代码和文档权属后，为仓库选择适合的许可证。真实课程素材、教师签名和第三方模板没有随本项目提供。
+本项目的代码和文档采用 [MIT 许可证](LICENSE)，版权署名为 `Copyright (c) 2026 8aus1R`。
+
+允许免费使用、复制、修改、分发和商用；分发副本或实质性部分时须保留版权及许可声明。MIT 不要求修改版开源，软件按现状提供，不附带担保。具体条款以 [LICENSE](LICENSE) 英文全文为准。
+
+真实课程素材、教师签名和第三方模板没有随本项目提供，其权利不因本仓库的许可证而改变。
