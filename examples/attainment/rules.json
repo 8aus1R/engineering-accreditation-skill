@@ -1,0 +1,25 @@
+{
+  "identity_columns": ["student_id"],
+  "expected_count": 3,
+  "decimals": 2,
+  "column_maxima": {
+    "coursework": "20",
+    "exam_part_a": "40",
+    "exam_part_b": "40"
+  },
+  "objectives": [
+    {
+      "id": "goal1",
+      "items": [
+        {"columns": ["coursework"], "full_score": "20", "contribution": "40"},
+        {"columns": ["exam_part_a"], "full_score": "40", "contribution": "60"}
+      ]
+    },
+    {
+      "id": "goal2",
+      "items": [
+        {"columns": ["exam_part_b"], "full_score": "40", "contribution": "100"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "student_count": 3,
+  "students": [
+    {
+      "key": ["DEMO-001"],
+      "attainment": {
+        "goal1": {"exact": "0.77", "rounded": "0.77"},
+        "goal2": {"exact": "1", "rounded": "1.00"}
+      }
+    },
+    {
+      "key": ["DEMO-002"],
+      "attainment": {
+        "goal1": {"exact": "0.84", "rounded": "0.84"},
+        "goal2": {"exact": "0.5", "rounded": "0.50"}
+      }
+    },
+    {
+      "key": ["DEMO-003"],
+      "attainment": {
+        "goal1": {"exact": "0", "rounded": "0.00"},
+        "goal2": {"exact": "0", "rounded": "0.00"}
+      }
+    }
+  ],
+  "aggregate": {
+    "goal1": {"exact": "0.53666666666666666666666666666666666666666666666667", "rounded": "0.54"},
+    "goal2": {"exact": "0.5", "rounded": "0.50"}
+  }
+}

@@ -1,0 +1,50 @@
+# Local task data and generated artifacts
+/data/
+/local-data/
+/local-delivery/
+/work/
+/outputs/
+/reports/
+/logs/
+/private/
+/rendered/
+
+# Credentials and machine-specific settings
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials*.json
+auth.json
+.codex/
+.agents/
+.vscode/
+.idea/
+
+# Course documents and archives: intentionally absent from the public release
+*.xls
+*.xlsx
+*.xlsm
+*.xlsb
+*.doc
+*.docx
+*.pdf
+*.zip
+*.rar
+*.7z
+*.csv
+!examples/attainment/scores.csv
+~$*
+
+# Runtime / OS artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+node_modules/
+*.log
+*.tmp
+Thumbs.db
+.DS_Store
