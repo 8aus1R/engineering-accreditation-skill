@@ -18,7 +18,9 @@ A Codex skill for engineering accreditation coursework: grade auditing, course o
 | 扫描试卷 PDF | 拆页、转正、重命名、按授权局部修改题头并检查原始批阅 |
 | 模拟材料 | 生成明确标注的演示数据或作答样例，独立检查计分约束 |
 
-这些是技能指导的工作流程，实际执行需要 Codex 和相应工具。本仓库附带的三个脚本分别用于达成度复算、文件清单核验和发现已运行的 Excel；没有内置完整的 Word/PDF 生成或渲染程序。
+这些是技能指导的工作流程，实际执行需要 Codex 和相应工具。本仓库附带的四个脚本分别用于达成度复算、文件清单核验、DOCX格式与渲染证据检查，以及发现已运行的 Excel；没有内置完整的 Word/PDF 生成或渲染程序。
+
+2026-10-19同步了真实作业/实验报告的目标识别、最小修改、异常及打包口径，补充原表直接引用、逐段系列选择与图表联动核验，并新增作业格式检查器。公开版保留通用规则，不包含私人项目实例、历史学生数据或原始截图。
 
 ## 目录
 
@@ -38,15 +40,16 @@ engineering-accreditation-skill/
 │       ├── SKILL.md                # 技能入口
 │       ├── agents/openai.yaml      # Codex 展示信息
 │       ├── references/             # 按任务读取的通用流程
-│       └── scripts/                # 三个辅助脚本
+│       └── scripts/                # 四个辅助脚本
 └── tests/
-    └── test_helpers.py             # 虚构数据与临时文件验证
+    ├── test_helpers.py             # 虚构数据与临时文件验证
+    └── test_homework_format.py     # 合成DOCX与过期渲染证据验证
 ```
 
 ## 环境
 
 - 使用技能：能够读取本地技能文件并执行相应任务的 Codex 环境。
-- 运行两个 Python 脚本及测试：Python 3.10 或更新版本，仅使用标准库，无须安装 pip 依赖。
+- 运行三个 Python 脚本及测试：Python 3.10 或更新版本，仅使用标准库，无须安装 pip 依赖。
 - 发现已运行的 Excel：Windows、PowerShell、桌面版 Microsoft Excel，以及已打开的工作簿。非 Windows 环境可使用其他流程，跳过这个辅助脚本。
 - Word/PDF 制作、格式转换、渲染和原生 Office 核验：自行提供相应工具，或使用目标环境中已安装的文档、表格、PDF 技能。它们没有随本项目打包。
 
@@ -58,11 +61,11 @@ engineering-accreditation-skill/
 
 ### 让 Codex 从 GitHub 安装
 
-仓库上传后，将下面请求中的链接替换为你实际的仓库链接，再发给 Codex：
+将下面请求发给 Codex：
 
 ```text
 请使用 skill-installer 从这个 GitHub 仓库安装 skills/engineering-accreditation：
-粘贴实际仓库链接
+https://github.com/8aus1R/engineering-accreditation-skill
 ```
 
 ### 手动安装
@@ -133,13 +136,23 @@ python skills/engineering-accreditation/scripts/verify_homework_delivery.py --ro
 
 本仓库没有附带 `local-delivery`。具体清单格式及参数见 [批量交付流程](skills/engineering-accreditation/references/batch-student-homework.md)。该脚本只核对文件集合、哈希、目录数量与 CSV 引用，不检查答案、评分、Word 可打开性或页面渲染。
 
+## 新生成作业的格式与渲染证据检查
+
+在已完成真实渲染及版式检查后，提供当前哈希绑定的证据：
+
+```text
+python skills/engineering-accreditation/scripts/check_homework_format.py --root local-delivery --expected-count 1 --expected-score-count 20 --score-color C00000 --render-report work/render-evidence.json --output work/format-check.json
+```
+
+人数、题分字段数和颜色都是当前任务参数。它检查题分前方框/全角空格、部分正文评语、段落/样式控制、文件覆盖及提供的渲染证据；不判答案、不比较Excel、不查看图片像素。卷名字体、全部位置的全角空格、页脚及续页标题仍需独立检查。`--structure-only`只用于调试，不能代替交付核验；完整证据结构见[作业格式与全量检查](skills/engineering-accreditation/references/homework-delivery-gate.md)。这套规则不授权删除真实原始作业的批阅或签名。
+
 ## 测试
 
 ```text
 python -m unittest discover -s tests -v
 ```
 
-测试使用虚构分数和临时文件，检查正常计算、真实数值 0、缺失/重复/越界输入、观察结果不一致、输出覆盖保护，以及交付文件篡改、额外文件、路径越界和 CSV 覆盖。测试不会启动 Office，也不验证真实课程文件或打印版式。
+测试使用虚构分数和临时文件，检查正常计算、真实数值 0、缺失/重复/越界输入、观察结果不一致、输出覆盖保护，以及交付文件篡改、额外文件、路径越界和 CSV 覆盖。格式检查器另覆盖跨run的全角空格、扣分评语、段落/样式继承、真实列表、漏文件和过期渲染哈希。测试不会启动 Office，也不验证真实课程文件或打印版式；合成微型PNG只用于检验证据匹配分支。
 
 ## 数据与发布边界
 

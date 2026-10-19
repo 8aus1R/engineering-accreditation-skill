@@ -14,6 +14,7 @@ description: 处理工程认证课程材料，包括成绩与课程目标达成�
 - 柱状图、学生散点图、数据引用与可选竖排布局：[图表样式与核验](references/attainment-chart-style.md)。
 - 多学年、跨班级和排除名单的统计对比：[跨批次分析](references/multi-year-analysis.md)。
 - 从真实作业组卷、公式图片与页面排版：[作业排版](references/homework-layout.md)。
+- 新生成、模拟或按授权重新排版的作业：[作业格式与全量检查](references/homework-delivery-gate.md)。逐份检查题分前方框、正文评语、段落控制及当前渲染证据；只读工具见 [check_homework_format.py](scripts/check_homework_format.py)。本规则不授权清除真实原始批阅。
 - 全班Word批量制作、DOC转换、目录交付：[批量作答与交付](references/batch-student-homework.md)。完整性检查工具见 [verify_homework_delivery.py](scripts/verify_homework_delivery.py)。
 - 模拟成绩、模拟作答和按学生拆分材料：[模拟与拆分](references/materials.md)。
 - 扫描试卷拆页、转正、题头局部修改和命名：[扫描试卷PDF](references/scanned-exam-pdf.md)。
@@ -34,7 +35,7 @@ description: 处理工程认证课程材料，包括成绩与课程目标达成�
 
 ## 工具与效率
 
-- 本技能提供工作方法和三个辅助脚本。文档生成、PDF处理、渲染和原生Office操作需目标环境具备相应工具；缺少能力时报告核验缺口。
+- 本技能提供工作方法和四个辅助脚本。文档生成、PDF处理、渲染和原生Office操作需目标环境具备相应工具；缺少能力时报告核验缺口。
 - 使用有界数据块，分别读取数值和公式；统一重算，复用已验证快照，不反复打开或转换同一文件。
 - 完整记录交给脚本处理，向模型返回摘要和异常。仅在用户明确授权时将课程数据传到网页或第三方服务。
 - 修改Office全局状态仅限自己创建的实例，并在finally恢复；不结束用户现有进程，不关闭未保存的文档。
