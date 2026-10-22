@@ -14,9 +14,10 @@ description: 处理工程认证课程材料，包括成绩与课程目标达成�
 - 柱状图、学生散点图、数据引用与可选竖排布局：[图表样式与核验](references/attainment-chart-style.md)。
 - 多学年、跨班级和排除名单的统计对比：[跨批次分析](references/multi-year-analysis.md)。
 - 从真实作业组卷、公式图片与页面排版：[作业排版](references/homework-layout.md)。
-- 新生成、模拟或按授权重新排版的作业：[作业格式与全量检查](references/homework-delivery-gate.md)。逐份检查题分前方框、正文评语、段落控制及当前渲染证据；只读工具见 [check_homework_format.py](scripts/check_homework_format.py)。本规则不授权清除真实原始批阅。
+- 新生成、模拟或按授权重新排版的作业及期末答卷DOCX：[作业格式与全量检查](references/homework-delivery-gate.md)。逐份检查题分前方框、正文评语、段落控制及当前渲染证据；只读工具见 [check_homework_format.py](scripts/check_homework_format.py)。本规则不授权清除真实原始批阅。
 - 全班Word批量制作、DOC转换、目录交付：[批量作答与交付](references/batch-student-homework.md)。完整性检查工具见 [verify_homework_delivery.py](scripts/verify_homework_delivery.py)。
 - 模拟成绩、模拟作答和按学生拆分材料：[模拟与拆分](references/materials.md)。
+- 用户明确要求模拟版式分层、部分学生保留原版或精确学生文件名：[分层模拟版式与精确命名](references/tiered-simulated-layout.md)。分层仅按本次批准方案执行，不能用随机排版冒充真实提交。
 - 扫描试卷拆页、转正、题头局部修改和命名：[扫描试卷PDF](references/scanned-exam-pdf.md)。
 - 真实作业、实验报告、嵌套解压与评分字段处理：[真实材料](references/authentic-records.md)。
 - PDF成绩导入、个人评分表和签名保留：[成绩导入与评分表](references/score-forms.md)。
